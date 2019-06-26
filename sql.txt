@@ -1,0 +1,198 @@
+select firstname,netsalary from associate,salary where associate.associateid=salary.associateid;
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+select firstname,accountnumber from associate,bankdetails where associate.associateid=bankdetails.associateid;
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+select max (basicsalary) from salary ;
+select * from salary;
+select basicsalary from salary ;
+-----------------------------------------------------------------------
+select min(basicsalary) from salary;
+
+select firstname from associate where firstname like 'R%';
+
+
+select * from ASSOCIATE where firstname like '%1';
+
+select * 
+  from Associate
+    where yearlyinvestmentunder80c <90000 and yearlyinvestmentunder80c >70000;
+    
+    select * from ASSOCIATE;
+    
+      select count(*)
+    from   Associate;
+    
+    select abs(-15)
+  from dual;
+  
+  select a.associateId,a.firstName,a.lastName,s.basicSalary,s.netSalary,b.bankName
+  from  Associate a , Salary s,BankDetails b;
+    
+  select avg(hra) from salary;  
+  
+  select associate.associateId,associate.firstName,associate.lastName,salary.basicSalary,salary.netSalary
+  from  Associate,Salary  ;
+  
+  select * from bankdetails where ASSOCIATEID=101;
+  
+select hra from salary order by basicsalary desc;
+
+SELECT MAX(hra)FROM salary WHERE
+       hra<(SELECT MAX(hra)from salary); 
+       
+       select * from salary;
+       
+           SELECT MAX(hra)FROM salary WHERE
+       hra<(SELECT MAX(hra)from salary) ;      
+       
+set serveroutput off;
+begin 
+DBMS_OUTPUT.PUT_LINE('hi');
+END;
+
+declare
+vcname varchar2(20)not null:='Raj';
+id number;
+begin
+vcname:='Raj';
+id:='100';
+DBMS_OUTPUT.PUT_LINE(vcname||'  '||id);
+end;
+
+declare
+aid number;
+fname varchar2(20);
+lname varchar(20);
+begin
+select associateid,firstname,lastname
+into aid,fname,lname
+from associate
+where associateid=&id;
+DBMS_OUTPUT.PUT_LINE(aid||'  '||fname||' '||lname);
+end;
+  
+  declare
+aid associate.associateid%type;
+fname associate.firstname%type;
+lname associate.lastname%type;
+begin
+select associateid,firstname,lastname
+into aid,fname,lname
+from associate
+where associateid=&id;
+DBMS_OUTPUT.PUT_LINE(aid||'  '||fname||' '||lname);
+end;
+
+
+ declare
+associaterow associate%rowtype;
+begin
+select * 
+into associaterow
+from associate
+where associateid=&id;
+DBMS_OUTPUT.PUT_LINE(associaterow.associateid||' '||associaterow.firstname);
+end;
+  
+  declare
+  cursor associatecursor is select * from associate ;
+  associaterow associate%rowtype;
+  begin
+  open associatecursor;
+  LOOP
+  fetch  associatecursor into associaterow;
+  DBMS_OUTPUT.PUT_LINE(associaterow.associateid||' '||associaterow.firstname);
+  exit when associatecursor %NOTFOUND;
+  end loop;
+  close associatecursor;
+  end;
+  
+   select staff_name,design_code 
+  from staff_master
+  
+  where STAFF_SAL>20000 and STAFF_SAL<90000; 
+  select staff_code,deptcode,staff_name 
+  from staff_master
+  where ;
+  
+  1.1
+ Q.1
+  select staff_name,design_code 
+  from staff_master
+ where STAFF_SAL>20000 and STAFF_SAL<90000
+  and HIREDATE> '01-june-2019';
+ 
+  
+ 
+  
+  q5
+  
+    select staff_name from staff_master where staff_name like '%/_%' escape '/';
+  
+  q3  
+SELECT  staff_name
+FROM    staff_master
+WHERE   MGR_CODE is null;
+
+q4
+select * from book_master
+where book_pub_year>'2004' and book_pub_year<'2008' ;
+
+select * from book_master
+where book_pub_year between '2004' and '2008'  and book_name like '%&%';
+
+2.1
+select staff_name,staff_sal
+from staff_master;
+
+2.2
+q1 ...
+select max(staff_sal)as maximum ,min(staff_sal) as minimum,
+avg(staff_sal) as average,sum(staff_sal) as total
+from staff_master;
+
+select dept_code,(mgr_code)
+from staff_master;
+
+select staff_name,dept_code,dept_name
+from department_master,staff_master
+where department_master.dept_code=staff_master.dept_code
+and staff_sal>'20000';
+
+select staff_name,dept_code,dept_name
+from department_master as dm ,staff_master as sm
+where dm.dept_code=sm.dept_code
+and staff_sal>'20000';
+
+//3.1
+1
+select staff_name,staff_code,staff_sal
+from staff_master
+where staff_sal<(select avg(staff_sal) from staff_master);
+
+
+select count(empno) as total_no_of_mgr ,employee.DEPTNO
+from employee
+group by deptno;
+
+
+SELECT hiredate FROM employee WHERE TO_CHAR(hiredate,'mon')='june';
+
+////3.1-2
+select staff_code as staff#,staff_name as staff,dept_name as mgr#,mgr_code as manager
+from staff_master,department_master
+where staff_master.dept_code=department_master.dept_code;
+ 
+ 3.1-13
+select count(empno)as no_of_emp,deptno from employee group by deptno;
+
+1.1     
+select staff_name,LPAD(staff_sal,15,'$')from staff_master ;
+
+
+  
+ 
+ 
+ 
+ 
+ 
